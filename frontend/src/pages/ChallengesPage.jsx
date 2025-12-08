@@ -22,6 +22,10 @@ export default function ChallengesPage() {
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
 
+  const hasSubmitted = (challengeId) => {
+  return submittedChallenges.includes(challengeId?.toString());
+};
+
 // -------------------------------------------------------
 // ✅ STEP 1: Check backend block status on load
 // -------------------------------------------------------
@@ -221,15 +225,16 @@ useEffect(() => {
                   isBlocked ||
                   status === "upcoming" ||
                   status === "ended" ||
-                  submittedChallenges.includes(nextChallenge._id.toString())
-                    ? "disabled"
+                  //submittedChallenges.includes(nextChallenge._id.toString())
+                  hasSubmitted(nextChallenge._id)  
+                  ? "disabled"
                     : ""
                 }`}
                 disabled={
                   isBlocked ||
                   status === "upcoming" ||
                   status === "ended" ||
-                  submittedChallenges.includes(nextChallenge._id.toString())
+                  hasSubmitted(nextChallenge._id)
                 }
                 onClick={() => {
                   if (isBlocked) {
@@ -241,7 +246,7 @@ useEffect(() => {
               >
                 {isBlocked
                   ? "⚠️ Malpractice Detected"
-                  : submittedChallenges.includes(nextChallenge._id.toString())
+                  : hasSubmitted(nextChallenge._id)
                   ? "Already Submitted"
                   : status === "ended"
                   ? "Challenge Ended"

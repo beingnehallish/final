@@ -486,9 +486,12 @@ localStorage.removeItem(`challengeStart_${id}`);
 setTimeLeft(0); // reset UI timer
 window.dispatchEvent(new Event("stop-timer"));
 
-      if (res.ok) {
-        navigate("/challenges");
-      } else {
+      if (res.ok) 
+        {
+         navigate("/challenges", { replace: true });
+          window.location.reload(); // 🔁 force refresh to fetch new submissions 
+      }
+      else {
         const data = await res.json();
         alert("Error: " + data.message);
       }
