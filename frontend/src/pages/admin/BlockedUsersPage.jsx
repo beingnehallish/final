@@ -48,7 +48,7 @@ export default function BlockedUsers() {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", background:"white" }}>
       <h1>🚫 Blocked Users</h1>
 
       {loading ? (
@@ -70,7 +70,7 @@ export default function BlockedUsers() {
           <tbody>
             {blockedUsers.map((u, index) => (
               <tr key={index}>
-                <td style={tdStyle}>{u.name || "Unknown"}</td>
+                <td style={tdStyle}>{u.fullName || "Unknown"}</td>
                 <td style={tdStyle}>{u.email}</td>
                 <td style={tdStyle}>{u.blockedReason || "Not provided"}</td>
                 <td style={tdStyle}>
@@ -101,6 +101,7 @@ const thStyle = {
   padding: "10px",
   border: "1px solid #ddd",
   fontWeight: "bold",
+  background:"blue",
 };
 
 const tdStyle = {

@@ -13,13 +13,28 @@ body {
 }
 
 /* Navbar */
+/* Sticky Navbar */
 .navbar {
+  position: sticky;   /* Sticks to top */
+  top: 0;
+  z-index: 9999;      /* Always on top */
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 1.2rem 2rem;
+  background: rgba(255, 255, 255, 0.9);   /* Slight transparency */
+  backdrop-filter: blur(10px);            /* Soft blur effect */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* When user scrolls, navbar becomes more solid */
+.navbar.scrolled {
   background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 }
 
 .logo {

@@ -9,7 +9,7 @@ build/
 .temp/
 
 # Environment / secrets
-.env
+
 .env.local
 
 # Logs

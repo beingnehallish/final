@@ -17,6 +17,7 @@ import cron from "node-cron";
 import { connectDB } from "./config/db.js";
 
 // ROUTES
+import "./cron.js";
 import authRoutes from "./routes/authRoutes.js";
 import challengeRoutes from "./routes/challengeRoutes.js";
 import runRoute from "./routes/runRoute.js";
@@ -26,6 +27,9 @@ import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import proctorRoutes from "./routes/proctorRoutes.js";
 import blockRoutes from "./routes/blockRoutes.js"; // ✅ REQUIRED
 import Challenge from "./models/Challenge.js";
+import adminRoutes from "./routes/adminRoutes.js";
+import studentRoutes from "./routes/studentRoutes.js";
+
 
 const app = express();
 
@@ -53,7 +57,8 @@ app.use("/api/submissions", submissionRoute);
 app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/proctor", proctorRoutes);
 app.use("/api", blockRoutes); // ✅ BLOCK USERS ROUTES ENABLED
-
+app.use("/api/admin", adminRoutes);
+app.use("/api/admin/students", studentRoutes);
 // ------------------ CRON JOB ------------------
 cron.schedule("* * * * *", async () => {
   try {
@@ -83,7 +88,11 @@ cron.schedule("* * * * *", async () => {
 // ------------------ START SERVER ------------------
 const PORT = process.env.PORT || 5000;
 
-connectDB(process.env.MONGODB_URI).then(() => {
+connectDB(process.env.MONGODB_URI).then(async () => {
   app.listen(PORT, () =>
     console.log(`🚀 Server started on port ${PORT}`)
-  );});
+  );
+
+  // Start cron only after DB connected
+  import("./cron.js");
+});

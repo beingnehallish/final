@@ -144,7 +144,7 @@ export default function ViewChallenges() {
                   <strong>Test Cases:</strong>
                   <ul>
                     {challenge.testCases.map((tc,i) => (
-                      <li key={i}><strong>Input:</strong> {tc.input} | <strong>Output:</strong> {tc.output}</li>
+                      <li key={i}><strong>Input:</strong> {tc.input} | <strong>Output:</strong> {tc.expectedOutput}</li>
                     ))}
                   </ul>
                 </div>
@@ -203,7 +203,7 @@ export default function ViewChallenges() {
                   <div key={index} className="testcase-item">
                     <input type="text" placeholder="Input" value={tc.input}
                       onChange={e => handleTestCaseChange(index,"input",e.target.value)} />
-                    <input type="text" placeholder="Expected Output" value={tc.output}
+                    <input type="text" placeholder="Expected Output" value={tc.expectedOutput}
                       onChange={e => handleTestCaseChange(index,"output",e.target.value)} />
                     <button onClick={() => removeTestCase(index)} className="delete-btn small"><FaMinus /></button>
                   </div>

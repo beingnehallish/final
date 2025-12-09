@@ -14,12 +14,26 @@ export default function LandingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-slide every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [images.length]);
+  // Auto-slide every 3 seconds
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  }, 3000);
+  return () => clearInterval(interval);
+}, [images.length]);
+
+// ⭐ NEW: Sticky Navbar scroll effect
+useEffect(() => {
+  const handleScroll = () => {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 10) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
   // Team data
   const teamMembers = [
     { img: h1, name: "Mahi Verma", usn: "1JB22IS082" , github: "https://github.com/beingnehallish", linkedin: "https://linkedin.com/in/nehal--gupta"},
