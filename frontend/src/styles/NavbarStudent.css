@@ -17,6 +17,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #007BFF;
+  
 }
 
 /* Navbar Links */
@@ -35,19 +36,23 @@
   color: #333;
   text-decoration: none;
   padding: 0.5rem 1rem;
+  border: 2px solid white;
   border-radius: 8px;
   transition: background 0.3s, color 0.3s;
 }
 
 /* Hover Effect */
 .navbar-student nav a:hover {
-  background-color: #007BFF;
-  color: #fff;
+  background-color: white;
+  border-radius: 28px;
+  color: #007BFF;
+  border: 2px solid #007BFF;
 }
 
 /* Active Link */
 .navbar-student nav a.active {
   background-color: #007BFF;
+  border-radius: 28px;
   color: #fff;
 }
 

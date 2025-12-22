@@ -196,6 +196,11 @@ useEffect(() => {
   return (
     <div className="challenges-page">
       <NavbarStudent />
+       <img
+    src={new URL("../assets/a2.gif", import.meta.url).href}
+    alt="decorative animation"
+    className="bg-gif"
+  />
       <div className="challenges-container">
         {!nextChallenge ? (
           <p className="no-challenges">No upcoming challenges at the moment.</p>
@@ -269,27 +274,75 @@ useEffect(() => {
             {step === 1 && (
               <>
                 <h2>Terms & Conditions</h2>
-                <div className="tc-container">
-                  <ul>
-                    <li>Complete your Profile before you begin compulsarily.</li>
-                    <li>No malpractice. Cheating leads to disqualification.</li>
-                    <li>Complete within the given time frame.</li>
-                    <li>Follow challenge instructions.</li>
-                    <li>If any issues, contact us.</li>
-                    <hr />
-                    <li>Hint: Pay attention to data types for inputs/outputs.</li>
-                    <li>All the best!</li>
-                  </ul>
+                <div className>
+                 <ol className="tc-list">
+  <li>
+    <strong>Academic Integrity:</strong> Any form of cheating, impersonation, or malpractice
+    will result in immediate disqualification.
+  </li>
+
+  <li>
+    <strong>Time & Submission:</strong> Challenges must be completed within the allotted
+    time. Late submissions are not accepted.
+  </li>
+
+  <li>
+    <strong>Original Work:</strong> All submissions must be your own. Sharing or copying
+    solutions is strictly prohibited.
+  </li>
+
+  <li>
+    <strong>Platform Usage:</strong> You may switch programming languages only if the
+    challenge allows it. Do not attempt to disrupt the system.
+  </li>
+
+  <li>
+    <strong>Conduct:</strong> Maintain respectful and professional behavior in all
+    interactions related to the challenge.
+  </li>
+
+  <li>
+    <strong>Notifications:</strong> Manage mobile or desktop notifications to avoid
+    distractions during the challenge.
+  </li>
+
+  <li>
+    <strong>Technical Issues:</strong> Report bugs or unexpected behavior immediately to
+    <strong> algoodyssey@gmail.com</strong>.
+  </li>
+
+  <li>
+    <strong>Organizer Rights:</strong> Challenge organizers reserve the right to disqualify
+    participants for violations. All decisions are final.
+  </li>
+
+  <li>
+    <strong>Agreement:</strong> By participating, you agree to follow these rules and any
+    future updates.
+  </li>
+</ol>
+
                 </div>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="agreeTC"
-                    checked={agreeTC}
-                    onChange={(e) => setAgreeTC(e.target.checked)}
-                  />
-                  <label htmlFor="agreeTC"> I agree to all Terms & Conditions</label>
-                </div>
+                <div className="tc-checkbox-wrapper">
+  <label className={`tc-checkbox ${agreeTC ? "checked" : ""}`}>
+    <input
+      type="checkbox"
+      checked={agreeTC}
+      onChange={(e) => setAgreeTC(e.target.checked)}
+    />
+
+    <span className="checkmark">
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </span>
+
+    <span className="tc-text">
+      I agree to all <strong>Terms & Conditions</strong>
+    </span>
+  </label>
+</div>
+
                 <button className="btn" onClick={handleNext} disabled={!agreeTC}>
                   Next
                 </button>

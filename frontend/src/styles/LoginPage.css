@@ -1,6 +1,4 @@
-/* ------------------------------
-   GLOBAL BLUE THEME BACKGROUND  
---------------------------------*/
+
 .login-wrapper {
   height: 100vh;
   width: 100%;
@@ -14,7 +12,6 @@
   overflow: hidden;
 }
 
-/* Floating glowing circles */
 .login-wrapper::before,
 .login-wrapper::after {
   content: "";
@@ -42,9 +39,6 @@
   50% { transform: translateY(40px); }
 }
 
-/* ------------------------------
-        ANALOG CLOCK STYLING
---------------------------------*/
 .analog-clock {
   width: 180px;
   height: 180px;
@@ -94,9 +88,6 @@
   position: absolute;
 }
 
-/* ------------------------------
-         LOGIN CONTAINER
---------------------------------*/
 .login-container {
   width: 350px;
   padding: 40px;
@@ -120,9 +111,6 @@
   font-weight: 700;
 }
 
-/* ------------------------------
-          ROLE TOGGLE
---------------------------------*/
 .role-toggle {
   display: flex;
   gap: 10px;
@@ -134,14 +122,11 @@
   padding: 10px;
   background: rgba(255,255,255,0.2);
   border-radius: 14px;
-  border: none;
+  border: 0.5px solid grey;
   color: white;
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow:
-      inset 3px 3px 8px rgba(0,0,0,0.2),
-      inset -3px -3px 8px rgba(255,255,255,0.4);
 }
 
 .role-toggle button:hover {
@@ -155,9 +140,6 @@
       inset -4px -4px 10px rgba(255,255,255,0.4);
 }
 
-/* ------------------------------
-        INPUT FIELDS
---------------------------------*/
 .input {
   width: 100%;
   padding: 12px;
@@ -179,9 +161,6 @@
   transform: scale(1.02);
 }
 
-/* ------------------------------
-           LOGIN BUTTON
---------------------------------*/
 .btn {
   width: 100%;
   padding: 12px;
@@ -192,24 +171,57 @@
   letter-spacing: 1px;
   color: white;
   background: linear-gradient(135deg, #1e5799, #2980b9, #6dd5fa);
-  box-shadow:
-    3px 3px 12px rgba(0, 0, 0, 0.3),
-    -3px -3px 12px rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    6px 6px 18px rgba(0, 0, 0, 0.35),
-    -6px -6px 18px rgba(255, 255, 255, 0.5);
-}
 
-/* ------------------------------
-            ERROR TEXT
---------------------------------*/
 .error {
-  color: #ffcccc;
+  color: #ec3838;
+  font-weight: 700;
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 91%;
+}
+
+.password-wrapper .input {
+  padding-right: 42px; 
+}
+
+/* Eye icon */
+.eye-toggle {
+  position: absolute;
+  top: 40%;
+  right: -40px;
+  transform: translateY(-50%) scale(1);
+  cursor: pointer;
+  font-size: 1.05rem;
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.eye-toggle:hover {
+  color: #2563eb;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Open (password visible) */
+.eye-toggle.open {
+  color: #2563eb;
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Subtle blink animation */
+.eye-toggle.open {
+  animation: eyeBlink 0.25s ease;
+}
+
+@keyframes eyeBlink {
+  0% { transform: translateY(-50%) scale(1.2); }
+  50% { transform: translateY(-50%) scale(0.9); }
+  100% { transform: translateY(-50%) scale(1.2); }
 }

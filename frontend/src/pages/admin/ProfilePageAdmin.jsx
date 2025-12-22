@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/AdminDashboardUnique.css";
+import "../../styles/ProfilePageAdmin.css";
 
 export default function ProfilePageAdmin() {
   const navigate = useNavigate();
+
   const [admin, setAdmin] = useState(null);
   const [editMode, setEditMode] = useState(false);
+  const [message, setMessage] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [preview, setPreview] = useState("");
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -14,10 +19,8 @@ export default function ProfilePageAdmin() {
     newPassword: "",
     confirmPassword: "",
   });
-  const [message, setMessage] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [preview, setPreview] = useState("");
 
+  // ---------- FETCH ADMIN PROFILE ----------
   useEffect(() => {
     const fetchAdmin = async () => {
       try {
@@ -40,23 +43,30 @@ export default function ProfilePageAdmin() {
             newPassword: "",
             confirmPassword: "",
           });
+
           setPreview(
             data.user.image
               ? `http://localhost:5000${data.user.image}`
-              : "https://via.placeholder.com/120"
+              : "https://via.placeholder.com/140"
           );
         }
       } catch (err) {
-        console.error("❌ Failed to fetch admin info:", err);
+        console.error("Failed to fetch admin profile:", err);
       }
     };
 
     fetchAdmin();
   }, [navigate]);
 
-  if (!admin)
-    return <p style={{ textAlign: "center", marginTop: "2rem" }}>Loading profile...</p>;
+  if (!admin) {
+    return (
+      <p style={{ textAlign: "center", marginTop: "2rem" }}>
+        Loading profile...
+      </p>
+    );
+  }
 
+  // ---------- INPUT HANDLERS ----------
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -69,22 +79,33 @@ export default function ProfilePageAdmin() {
     }
   };
 
+  // ---------- SAVE PROFILE ----------
   const handleSave = async () => {
     try {
       const form = new FormData();
       form.append("fullName", formData.fullName);
 
-      if (selectedImage) form.append("image", selectedImage);
-      if (formData.oldPassword || formData.newPassword || formData.confirmPassword) {
+      if (selectedImage) {
+        form.append("image", selectedImage);
+      }
+
+      if (
+        formData.oldPassword ||
+        formData.newPassword ||
+        formData.confirmPassword
+      ) {
         form.append("oldPassword", formData.oldPassword);
         form.append("newPassword", formData.newPassword);
         form.append("confirmPassword", formData.confirmPassword);
       }
 
-      const res = await fetch(`http://localhost:5000/api/profile/${formData.email}`, {
-        method: "PUT",
-        body: form,
-      });
+      const res = await fetch(
+        `http://localhost:5000/api/profile/${formData.email}`,
+        {
+          method: "PUT",
+          body: form,
+        }
+      );
 
       const data = await res.json();
 
@@ -101,26 +122,29 @@ export default function ProfilePageAdmin() {
     }
   };
 
+  // ---------- LOGOUT ----------
   const handleLogout = () => {
-  localStorage.removeItem("email");
-  window.scrollTo(0, 0); // scroll to top
-  navigate("/");
-};
-
+    localStorage.removeItem("email");
+    window.scrollTo(0, 0);
+    navigate("/");
+  };
 
   return (
-     <div className="adm-profile-wrapper">
+    <div className="adm-profile-wrapper">
       <div className="adm-profile-container">
         <h1>Admin Profile</h1>
+
         {message && <p className="adm-profile-message">{message}</p>}
 
         <div className="adm-profile-card">
+          {/* ---------- LEFT : AVATAR ---------- */}
           <div className="adm-profile-left">
             <img
               src={preview}
               alt="Admin Avatar"
               className="adm-profile-avatar"
             />
+
             {editMode && (
               <input
                 type="file"
@@ -131,6 +155,7 @@ export default function ProfilePageAdmin() {
             )}
           </div>
 
+          {/* ---------- RIGHT : DETAILS ---------- */}
           <div className="adm-profile-right">
             {editMode ? (
               <>
@@ -142,10 +167,15 @@ export default function ProfilePageAdmin() {
                   placeholder="Full Name"
                   className="adm-input"
                 />
-                <p><strong>Email:</strong> {formData.email}</p>
+
+                <p>
+                  <strong>Email:</strong> {formData.email}
+                </p>
 
                 <hr />
+
                 <h3>Change Password</h3>
+
                 <input
                   type="password"
                   name="oldPassword"
@@ -154,6 +184,7 @@ export default function ProfilePageAdmin() {
                   placeholder="Old Password"
                   className="adm-input"
                 />
+
                 <input
                   type="password"
                   name="newPassword"
@@ -162,6 +193,7 @@ export default function ProfilePageAdmin() {
                   placeholder="New Password"
                   className="adm-input"
                 />
+
                 <input
                   type="password"
                   name="confirmPassword"
@@ -175,12 +207,14 @@ export default function ProfilePageAdmin() {
                   <button className="adm-btn primary" onClick={handleSave}>
                     Save
                   </button>
+
                   <button
                     className="adm-btn secondary"
                     onClick={() => setEditMode(false)}
                   >
                     Cancel
                   </button>
+
                   <button className="adm-btn logout" onClick={handleLogout}>
                     Logout
                   </button>
@@ -189,13 +223,23 @@ export default function ProfilePageAdmin() {
             ) : (
               <>
                 <h2>{admin.fullName}</h2>
-                <p><strong>Email:</strong> {admin.email}</p>
-                <p><strong>Role:</strong> {admin.role}</p>
+
+                <p>
+                  <strong>Email:</strong> {admin.email}
+                </p>
+
+                <p>
+                  <strong>Role:</strong> {admin.role}
+                </p>
 
                 <div className="adm-profile-buttons">
-                  <button className="adm-btn primary" onClick={() => setEditMode(true)}>
+                  <button
+                    className="adm-btn primary"
+                    onClick={() => setEditMode(true)}
+                  >
                     Edit Profile
                   </button>
+
                   <button className="adm-btn logout" onClick={handleLogout}>
                     Logout
                   </button>

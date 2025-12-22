@@ -1,0 +1,257 @@
+/* =====================================================
+   REGISTER STUDENT — ADMIN ONBOARDING PANEL
+===================================================== */
+
+.top-buttons {
+  width: 100%;
+  max-width: 1700px;
+  margin: 40px auto 0;
+  padding-right: 20px;
+  text-align: right;
+}
+
+/* ================= VIEW STUDENTS BUTTON ================= */
+.view-btn {
+  background: linear-gradient(135deg, #4fff6f, #1c8b16);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 22px rgba(137, 251, 114, 0.35);
+  transition: all 0.25s ease;
+}
+
+.view-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(56, 230, 126, 0.45);
+}
+
+/* ================= MAIN CARD ================= */
+.register-student-container {
+  max-width: 720px;
+  margin: 25px auto 60px;
+  padding: 38px 36px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border-radius: 22px;
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.08),
+    0 6px 14px rgba(0, 0, 0, 0.04);
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+.register-student-container::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+/* ================= HEADER ================= */
+.register-student-container h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 2.2rem;
+}
+
+/* ================= FORM ================= */
+.register-student-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.register-student-form label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  letter-spacing: 0.3px;
+}
+
+/* ================= INPUTS ================= */
+.register-student-form input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #dbe3f1;
+  font-size: 0.95rem;
+  background: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.register-student-form input[type="file"] {
+  padding: 10px;
+  background: #f8fafc;
+}
+
+.register-student-form input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+/* ================= SUBMIT BUTTON ================= */
+.register-student-form button {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 14px 30px rgba(34, 197, 94, 0.35);
+  transition: all 0.25s ease;
+}
+
+.register-student-form button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(34, 197, 94, 0.45);
+}
+
+.register-student-form button:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ================= MODAL OVERLAY ================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ================= MODAL ================= */
+.modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: 80vh;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px 28px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.35s ease;
+}
+
+.modal h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 14px;
+}
+
+/* ================= SEARCH ================= */
+.search-box {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #dbe3f1;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
+}
+
+/* ================= STUDENT LIST ================= */
+.student-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.student-item {
+  padding: 14px;
+  border-radius: 14px;
+  background: #f8fbff;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  border: 1px solid #e3ebf7;
+}
+
+.student-item:hover {
+  transform: translateY(-2px);
+  background: #f0f6ff;
+}
+
+.student-item strong {
+  display: block;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+.student-item span {
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.student-item p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.close-btn {
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid green;
+  background: white;
+  color: green;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.close-btn:hover {
+     margin-top: 16px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid black;
+  background: rgb(77, 208, 79);
+  color:black;
+  font-weight: 600;
+  cursor: pointer;
+ }
+
+/* ================= ANIMATIONS ================= */
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 640px) {
+  .register-student-container {
+    padding: 30px 22px;
+  }
+
+  .modal {
+    padding: 22px 20px;
+  }
+}

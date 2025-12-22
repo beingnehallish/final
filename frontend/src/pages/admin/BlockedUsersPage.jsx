@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../../styles/BlockedUsers.css";
 
 export default function BlockedUsers() {
   const [blockedUsers, setBlockedUsers] = useState([]);
@@ -36,7 +37,7 @@ export default function BlockedUsers() {
       }
 
       alert(`✅ ${email} has been unblocked.`);
-      fetchBlocked(); // refresh list
+      fetchBlocked();
     } catch (err) {
       console.error("Unblock error:", err);
       alert("Failed to unblock user.");
@@ -48,40 +49,42 @@ export default function BlockedUsers() {
   }, []);
 
   return (
-    <div style={{ padding: "20px", background:"white" }}>
+    <div className="blocked-users-container">
       <h1>🚫 Blocked Users</h1>
 
-      {loading ? (
-        <p>Loading blocked users...</p>
-      ) : blockedUsers.length === 0 ? (
-        <p>No blocked users 🎉</p>
-      ) : (
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      {loading && <p className="empty-text">Loading blocked users...</p>}
+
+      {!loading && blockedUsers.length === 0 && (
+        <p className="empty-text">No blocked users 🎉</p>
+      )}
+
+      {!loading && blockedUsers.length > 0 && (
+        <table className="blocked-table">
           <thead>
-            <tr style={{ background: "#f2f2f2" }}>
-              <th style={thStyle}>Name</th>
-              <th style={thStyle}>Email</th>
-              <th style={thStyle}>Reason</th>
-              <th style={thStyle}>Blocked At</th>
-              <th style={thStyle}>Action</th>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Reason</th>
+              <th>Blocked At</th>
+              <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
-            {blockedUsers.map((u, index) => (
+            {blockedUsers.map((user, index) => (
               <tr key={index}>
-                <td style={tdStyle}>{u.fullName || "Unknown"}</td>
-                <td style={tdStyle}>{u.email}</td>
-                <td style={tdStyle}>{u.blockedReason || "Not provided"}</td>
-                <td style={tdStyle}>
-                  {u.blockedAt
-                    ? new Date(u.blockedAt).toLocaleString()
+                <td>{user.fullName || "Unknown"}</td>
+                <td>{user.email}</td>
+                <td>{user.blockedReason || "Not provided"}</td>
+                <td>
+                  {user.blockedAt
+                    ? new Date(user.blockedAt).toLocaleString()
                     : "N/A"}
                 </td>
-                <td style={tdStyle}>
+                <td>
                   <button
-                    onClick={() => unblockUser(u.email)}
-                    style={unblockButtonStyle}
+                    className="unblock-btn"
+                    onClick={() => unblockUser(user.email)}
                   >
                     Unblock
                   </button>
@@ -94,27 +97,3 @@ export default function BlockedUsers() {
     </div>
   );
 }
-
-// ======================= STYLES =======================
-
-const thStyle = {
-  padding: "10px",
-  border: "1px solid #ddd",
-  fontWeight: "bold",
-  background:"blue",
-};
-
-const tdStyle = {
-  padding: "10px",
-  border: "1px solid #ddd",
-};
-
-const unblockButtonStyle = {
-  padding: "6px 12px",
-  background: "green",
-  color: "white",
-  border: "none",
-  borderRadius: "5px",
-  cursor: "pointer",
-  fontSize: "14px",
-};

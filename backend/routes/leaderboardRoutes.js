@@ -46,10 +46,6 @@ function buildPlagiarismMap(malpracticeLogs) {
   return plagiarismMap;
 }
 
-/**
- * GET /api/leaderboard/latest
- * Shows overall leaderboard across all challenges
- */
 router.get("/latest", async (req, res) => {
   try {
     const submissions = await Submission.find().populate("userId", "fullName");
@@ -58,10 +54,10 @@ router.get("/latest", async (req, res) => {
     if (!submissions.length)
       return res.json({ leaderboard: [], message: "No submissions yet" });
 
-    // Build plagiarism score per user
+    //build plagiarism score per user
     const plagiarismMap = buildPlagiarismMap(malpracticeLogs);
 
-    // Find global max for normalization
+    // global max for normalization
     const maxTime = Math.max(...submissions.map((s) => s.timeTaken || 0.001));
     const maxExec = Math.max(
       ...submissions.map((s) => s.executionTime || 0.001)
@@ -75,8 +71,6 @@ router.get("/latest", async (req, res) => {
 
       const effScore = computeEfficiency(s, maxTime, maxExec);
 
-      // 🔍 IMPORTANT: this must already be computed when saving Submission
-      // make sure your grading code sets s.correctnessScore (0–100)
       const correctness = parseFloat(s.correctnessScore) || 0;
 
       if (!userStats[userId]) {
@@ -99,13 +93,11 @@ router.get("/latest", async (req, res) => {
       const efficiencyPercentile = u.totalEfficiency / u.count;
       const plagiarismScore = plagiarismMap[u.userId] || 0;
 
-      // 👉 Raw score with penalty
       const rawScore =
         0.7 * correctnessScore +
         0.3 * efficiencyPercentile -
         0.1 * plagiarismScore;
 
-      // ✅ OPTION 2: never go below 0
       const totalScore = Math.max(rawScore, 0);
 
       return {

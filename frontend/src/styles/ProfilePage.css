@@ -66,36 +66,54 @@
   border-color: #007BFF;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
-
-.btn {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  background: #007BFF;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background: #0056b3;
-}
-
-.btn-secondary {
-  /*background: #6c757d;*/
-  margin-left: 0.5rem;
-}
-
-.btn-secondary:hover {
-  background: #4ba1f7;
-}
-
-.button-group {
+.profile-buttons {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+/* ================= BUTTON SYSTEM ================= */
+.pp-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: #ffffff;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+}
+
+.pp-btn:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.45);
+}
+
+/* Secondary */
+.pp-btn-secondary {
+  background: #e5e7eb;
+  color: #1e293b;
+  box-shadow: none;
+}
+
+.pp-btn-secondary:hover {
+  background: #d1d5db;
+  transform: none;
+}
+
+/* Logout */
+.pp-btn-logout {
+  background: #dc2626;
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.35);
+}
+
+.pp-btn-logout:hover {
+  background: #b91c1c;
+  box-shadow: 0 10px 22px rgba(220, 38, 38, 0.45);
 }
 
 p.message {

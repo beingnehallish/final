@@ -2,11 +2,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 
-// Fix __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load .env at start
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 console.log("MongoDB URI:", process.env.MONGODB_URI);
@@ -16,7 +14,7 @@ import cors from "cors";
 import cron from "node-cron";
 import { connectDB } from "./config/db.js";
 
-// ROUTES
+
 import "./cron.js";
 import authRoutes from "./routes/authRoutes.js";
 import challengeRoutes from "./routes/challengeRoutes.js";
@@ -25,7 +23,7 @@ import uploadRoute from "./routes/uploadRoute.js";
 import submissionRoute from "./routes/submissionRoute.js";
 import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import proctorRoutes from "./routes/proctorRoutes.js";
-import blockRoutes from "./routes/blockRoutes.js"; // ✅ REQUIRED
+import blockRoutes from "./routes/blockRoutes.js"; 
 import Challenge from "./models/Challenge.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
@@ -33,7 +31,6 @@ import studentRoutes from "./routes/studentRoutes.js";
 
 const app = express();
 
-// ------------------ MIDDLEWARE ------------------
 app.use(express.json({ limit: "10mb" }));
 app.use(
   cors({
@@ -44,7 +41,7 @@ app.use(
 app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// ------------------ HEALTH CHECK ------------------
+//HEALTH CHECK
 app.get("/", (_req, res) => {
   res.send("Algo Odyssey API is running");
 });
@@ -56,10 +53,11 @@ app.use("/api/upload", uploadRoute);
 app.use("/api/submissions", submissionRoute);
 app.use("/api/leaderboard", leaderboardRoutes);
 app.use("/api/proctor", proctorRoutes);
-app.use("/api", blockRoutes); // ✅ BLOCK USERS ROUTES ENABLED
+app.use("/api", blockRoutes); 
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/students", studentRoutes);
-// ------------------ CRON JOB ------------------
+
+//CRON JOB
 cron.schedule("* * * * *", async () => {
   try {
     const now = new Date();
@@ -85,7 +83,6 @@ cron.schedule("* * * * *", async () => {
   }
 });
 
-// ------------------ START SERVER ------------------
 const PORT = process.env.PORT || 5000;
 
 connectDB(process.env.MONGODB_URI).then(async () => {

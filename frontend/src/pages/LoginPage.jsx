@@ -13,6 +13,7 @@ const [time, setTime] = useState(new Date());
 const [hourDeg, setHourDeg] = useState(0);
 const [minuteDeg, setMinuteDeg] = useState(0);
 const [secondDeg, setSecondDeg] = useState(0);
+const [showPassword, setShowPassword] = useState(false);
 
 useEffect(() => {
   const updateClock = () => {
@@ -93,7 +94,7 @@ useEffect(() => {
         >
           Admin
         </button>
-      </div>
+      </div> 
 
       <form onSubmit={handleLogin}>
         <input
@@ -103,13 +104,24 @@ useEffect(() => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          className="input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="password-wrapper">
+  <input
+    type={showPassword ? "text" : "password"}
+    placeholder="Password"
+    className="input"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+
+  <span
+    className={`eye-toggle ${showPassword ? "open" : ""}`}
+    onClick={() => setShowPassword(!showPassword)}
+    aria-label="Toggle password visibility"
+  >
+    👁
+  </span>
+</div>
+
         {error && <p className="error">{error}</p>}
         <button type="submit" className="btn">Login</button>
       </form>

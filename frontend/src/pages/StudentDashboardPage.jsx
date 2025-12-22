@@ -59,7 +59,6 @@ useEffect(() => {
                   <th>Name</th>
                   <th>Correctness (%)</th>
                   <th>Efficiency Percentile</th>
-                  <th>Plagiarism Score</th> {/* ✅ new */}
                   <th>Total Score</th>
                 </tr>
               </thead>
@@ -73,7 +72,6 @@ useEffect(() => {
       <td>{student.userName}</td>
       <td>{(student.correctnessScore ?? 0).toFixed(2)}</td>
       <td>{(student.efficiencyPercentile ?? 0).toFixed(2)}</td>
-      <td>{(student.plagiarismScore ?? 0).toFixed(2)}</td> {/* ✅ new */}
       <td>{(student.totalScore ?? 0).toFixed(2)}</td>
     </tr>
   ))}

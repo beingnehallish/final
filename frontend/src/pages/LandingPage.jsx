@@ -124,7 +124,7 @@ useEffect(() => {
   </div>
 
   <div className="feature">
-    <h3>🌐 Community & Compedition</h3>
+    <h3>🌐 Community & Competition</h3>
     <p>
       Connect with fellow coders & learn together. 
       Grow as a part of a vibrant developer community that motivates you to do better using competitive coding.

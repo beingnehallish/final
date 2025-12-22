@@ -210,16 +210,16 @@ const handleLogout = () => {
                 />
 
                 <div className="profile-buttons">
-                  <button className="btn" onClick={handleSave}>
+                  <button className="pp-btn" onClick={handleSave}>
                     Save
                   </button>
                   <button
-                    className="btn btn-secondary"
+                    className="pp-btn pp-btn-secondary"
                     onClick={() => setEditMode(false)}
                   >
                     Cancel
                   </button>
-                  <button className="btn btn-logout" onClick={handleLogout}>
+                  <button className="pp-btn pp-btn-logout" onClick={handleLogout}>
                     Logout
                   </button>
                 </div>
@@ -238,10 +238,10 @@ const handleLogout = () => {
                 </p>
 
                 <div className="profile-buttons">
-                  <button className="btn" onClick={() => setEditMode(true)}>
+                  <button className="pp-btn" onClick={() => setEditMode(true)}>
                     Edit Profile
                   </button>
-                  <button className="btn btn-logout" onClick={handleLogout}>
+                  <button className="pp-btn pp-btn-logout" onClick={handleLogout}>
                     Logout
                   </button>
                 </div>

@@ -15,7 +15,6 @@ const transporter = nodemailer.createTransport({
   tls: {
     rejectUnauthorized: false,
   },
-  // optionally add pool: true if sending many emails
 });
 
 // Verify transporter once on load

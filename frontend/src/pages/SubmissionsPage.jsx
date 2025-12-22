@@ -31,10 +31,10 @@ useEffect(() => {
     <div>
       <NavbarStudent />
       <div className="dashboard-container">
-        <h1>Submissions</h1>
+        <h1>My Submissions</h1>
 
         <div className="submissions-page">
-          <h2>My Submissions</h2>
+  
           {submissions.length === 0 && <p>No submissions yet.</p>}
           <table className="submissions-table">
   <thead>
