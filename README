@@ -75,3 +75,149 @@ Algo Odyssey integrates AI to ensure **fair play and academic honesty**:
 
 ## 🏗️ System Architecture
 
+Frontend (React + Vite + Monaco Editor)
+↓
+Authentication (JWT + Institutional Credentials)
+↓
+Backend API (Node.js + Express)
+↓
+Code Execution Engine (Judge0 + Docker Sandbox)
+↓
+AI Monitoring + APERA Ranking Engine
+↓
+Database (MongoDB)
+
+
+---
+
+## ⚙️ Technology Stack
+
+### Frontend
+- React.js (Vite)
+- Tailwind CSS
+- Monaco Editor
+- HTML5, CSS3, JavaScript
+
+### Backend
+- Node.js
+- Express.js
+- JWT Authentication
+
+### Database
+- MongoDB
+
+### Code Execution
+- Judge0 API
+- Docker-based sandboxed execution
+
+### AI / ML
+- Python
+- OpenCV
+- AST & behavioral analysis modules
+
+### Tools & Deployment
+- Git & GitHub
+- Postman (API testing)
+- Jest (unit testing)
+- Apache JMeter (load testing)
+- Figma (UI/UX design)
+- Vercel (Frontend)
+- Render (Backend)
+
+---
+
+## 📊 Ranking & Evaluation (APERA Model)
+
+Algo Odyssey uses **APERA (Adaptive Plagiarism-aware Efficiency-based Ranking Algorithm)**.
+
+Each submission is evaluated on:
+- Code correctness
+- Execution time
+- Inferred time & space complexity
+- Plagiarism score
+- Historical performance
+- Timely participation
+
+This ensures **fair, adaptive, and industry-relevant rankings**, discouraging brute-force and copied solutions.
+
+---
+
+## 🔐 Security & Reliability
+
+- JWT-based secure authentication
+- Institution-only verified access
+- Docker sandbox for safe code execution
+- Secure API endpoints
+- AI-driven plagiarism & malpractice detection
+- Encrypted user credentials
+- Scalable architecture for concurrent users
+
+---
+
+## 🧪 Testing Conducted
+
+- Unit testing for backend APIs
+- Code execution validation with edge cases
+- Load testing for concurrent participation
+- Authentication & security testing
+- AI monitoring validation
+- UI/UX and usability testing
+
+---
+
+## 📈 Results & Impact
+
+- Significant improvement in code correctness
+- Strong increase in optimized solutions
+- Higher and more consistent student participation
+- Drastic reduction in plagiarism cases
+- Improved interview readiness and coding confidence
+
+---
+
+## 🔮 Future Scope
+
+- Reinforcement Learning–based APERA optimization
+- Inter-college and national coding leagues
+- Mobile application support
+- Industry-aligned challenge libraries
+- Resume and skill-gap analytics
+- Corporate hiring and assessment integration
+
+---
+
+## 👥 Project Team
+
+- **Nehal Gupta** (1JB22IS099)  
+- **Mahi Verma** (1JB22IS082)  
+- **Prathvi D Patil** (1JB22IS110)  
+- **Punya Shree S R** (1JB22IS119)
+
+**Project Guide**  
+Dr. Gopalakrishna M T  
+Professor & Head, Department of ISE  
+SJB Institute of Technology
+
+---
+
+## 🏫 Institution
+
+**SJB Institute of Technology**  
+Affiliated to Visvesvaraya Technological University (VTU)  
+Accredited by NAAC (A Grade) and NBA
+
+---
+
+## 📜 License
+
+This project is developed as an **academic final-year project**.  
+Reuse or extension should provide appropriate credit to the authors and institution.
+
+---
+
+## ⭐ Final Note
+
+> *Algo Odyssey is not just a coding platform — it is a journey that transforms students into disciplined, efficient, and industry-ready problem solvers.*
+
+
+
