@@ -1,227 +1,199 @@
-# 🚀 Algo Odyssey – Competitive Coding Meets the Campus
+Algo Odyssey – Competitive Coding Meets the Campus
 
-Algo Odyssey is an **institution-level competitive coding platform** designed to cultivate consistent coding practice, algorithmic thinking, and fair competition among students.
-Built as a **final-year engineering project**, it bridges the gap between academic learning and real-world technical expectations through **timed challenges, automated evaluation, adaptive ranking, and AI-driven integrity checks**.
+--------------------------------------------------
 
----
+PROJECT OVERVIEW
 
-## 📌 Project Overview
+Algo Odyssey is an institutional-level competitive coding platform designed to improve students’ programming, algorithmic thinking, and problem-solving skills through structured, time-bound challenges. The platform is developed specifically for academic institutions and focuses on fairness, consistency, and integrity in coding assessments.
 
-Algo Odyssey provides a **structured, gamified, and secure coding ecosystem** where students participate in **time-bound challenges released every 3 days**.
-Unlike generic global platforms, it is **tailored for institutional use**, ensuring:
+A new coding challenge is released every three days. Students must solve the problem within a fixed time window. Submissions are evaluated not only for correctness but also for execution efficiency, inferred time complexity, and historical performance. Students who do not participate in a challenge receive zero points, enforcing discipline and regular engagement.
 
-* Authenticated access using **University Seat Number + College Email**
-* **Efficiency-aware evaluation** (not just correctness)
-* **Zero-point penalty** for missed challenges to enforce consistency
-* **AI-based plagiarism & malpractice detection**
-* Transparent and adaptive **ranking via APERA model**
+The system integrates automated code evaluation, adaptive ranking, and AI-based plagiarism and malpractice detection, making it suitable for interview preparation, competitive programming practice, and institutional assessments.
 
-The platform prepares students for **technical interviews, hackathons, and industry-level coding assessments**.
+--------------------------------------------------
 
----
+OBJECTIVES
 
-## 🎯 Objectives
+1. Encourage consistent coding practice through scheduled challenges.
+2. Improve algorithmic thinking and optimization skills.
+3. Simulate real-world interview-style, time-constrained coding environments.
+4. Promote healthy peer competition within the institution.
+5. Ensure fairness using adaptive, multi-factor ranking.
+6. Preserve academic integrity using AI-driven monitoring.
 
-1. Promote **regular and disciplined coding practice**
-2. Encourage **optimized, scalable, and efficient solutions**
-3. Simulate **real interview-like, time-constrained environments**
-4. Foster **healthy peer competition** within the institution
-5. Ensure **academic integrity** using AI-based monitoring
-6. Provide **data-driven performance analytics** for students and admins
+--------------------------------------------------
 
----
+KEY FEATURES
 
-## 🧠 Key Features
+Student Features
+- Secure login using University Seat Number and college email ID
+- New coding challenge every 3 days
+- Integrated online code editor with syntax highlighting
+- Timer-based challenge environment
+- Multi-language coding support
+- Automated evaluation with visible and hidden test cases
+- Scoring based on correctness, efficiency, and complexity
+- Leaderboard and performance tracking
+- Zero points for non-participation
 
-### 👨‍🎓 Student Features
+Admin Features
+- Admin dashboard for challenge management
+- Upload and manage challenges and test cases
+- Monitor submissions and student performance
+- View plagiarism and malpractice reports
+- Track participation and ranking statistics
 
-* Secure login using **USN & institutional email**
-* New coding challenge every **3 days**
-* Integrated **Monaco Code Editor**
-* Live countdown timer during challenges
-* Multi-language support (C++, Java, Python, etc.)
-* Automated evaluation using **visible + hidden test cases**
-* Performance-based scoring (correctness + efficiency)
-* Dynamic **leaderboard & ranking**
-* Zero points for non-participation
+AI and Integrity Features
+- AST-based code plagiarism detection
+- Token similarity analysis
+- Behavioral anomaly detection
+- Webcam-based malpractice monitoring
+- Detection of multiple faces, looking away, phone usage, and camera obstruction
+- Session behavior and network anomaly tracking
 
-### 🧑‍🏫 Admin Features
+--------------------------------------------------
 
-* Admin dashboard for challenge management
-* Upload/edit challenges & test cases
-* Monitor submissions and rankings
-* View AI-generated malpractice & plagiarism reports
-* Track student participation and performance trends
+SYSTEM ARCHITECTURE (OVERVIEW)
 
-### 🤖 AI & Integrity Layer
+Frontend
+- React.js with Vite
+- Tailwind CSS
+- Monaco Code Editor
 
-* AST-based plagiarism detection
-* Token similarity analysis
-* Behavioral anomaly detection
-* Webcam-based malpractice monitoring:
+Backend
+- Node.js
+- Express.js
+- JWT-based authentication
 
-  * Multiple faces detection
-  * Looking away / head pose deviation
-  * Unauthorized objects (phone/book)
-  * Camera obstruction
-  * Task/window switching
-  * Network anomalies
+Code Execution
+- Judge0 API
+- Docker-based sandboxed execution
 
----
+Database
+- MongoDB
 
-## 🏗️ System Architecture (High-Level)
+AI and Monitoring
+- Python
+- OpenCV
+- AST and behavioral analysis modules
 
-```
-Frontend (React + Vite + Monaco Editor)
-        ↓
-Authentication (JWT + Institutional Credentials)
-        ↓
-Backend API (Node.js + Express)
-        ↓
-Code Execution Engine (Judge0 + Docker Sandbox)
-        ↓
-AI Monitoring & APERA Ranking Engine
-        ↓
-Database (MongoDB)
-```
+--------------------------------------------------
 
----
+RANKING AND EVALUATION MODEL
 
-## ⚙️ Tech Stack
+The platform uses an adaptive ranking algorithm that evaluates submissions based on:
 
-### Frontend
+- Code correctness
+- Execution time
+- Inferred time and space complexity
+- Plagiarism score
+- Historical performance
+- Timely participation
 
-* React.js (Vite)
-* Tailwind CSS
-* Monaco Editor
-* HTML5, CSS3, JavaScript
+This ensures fair ranking and discourages brute-force or copied solutions.
 
-### Backend
+--------------------------------------------------
 
-* Node.js
-* Express.js
-* JWT Authentication
+SECURITY MEASURES
 
-### Database
+- JWT-based secure authentication
+- Institution-only access using verified credentials
+- Sandboxed code execution using Docker
+- Secure API endpoints
+- AI-powered plagiarism and malpractice detection
+- Encrypted user credentials
 
-* MongoDB
+--------------------------------------------------
 
-### Code Execution
+TESTING CONDUCTED
 
-* Judge0 API
-* Docker-based sandboxing
+- Backend API unit testing
+- Automated code evaluation testing
+- Load testing for concurrent users
+- Authentication and security testing
+- AI monitoring validation
+- UI and usability testing
 
-### AI / ML
+--------------------------------------------------
 
-* Python
-* OpenCV
-* AST & token-based analysis
+RESULTS AND IMPACT
 
-### Dev & Testing Tools
+- Improved student code correctness
+- Increased optimized and efficient solutions
+- Higher participation and engagement
+- Significant reduction in plagiarism cases
+- Better preparation for technical interviews
 
-* Git & GitHub
-* Postman (API testing)
-* Jest (unit testing)
-* Apache JMeter (load testing)
-* Figma (UI/UX design)
+--------------------------------------------------
 
-### Deployment
+FUTURE ENHANCEMENTS
 
-* Frontend: Vercel
-* Backend: Render
-* Database: MongoDB Atlas
+- Reinforcement learning based adaptive ranking
+- Inter-college competitive leagues
+- Mobile application support
+- Industry-aligned challenge library
+- Resume and skill-gap analytics
+- Corporate assessment and hiring integration
 
----
+--------------------------------------------------
 
-## 📊 Ranking & Evaluation Model (APERA)
+TECHNOLOGY STACK
 
-Algo Odyssey uses **APERA (Adaptive Plagiarism-aware Efficiency-based Ranking Algorithm)** which evaluates submissions based on:
+Frontend
+- React.js
+- Vite
+- Tailwind CSS
+- HTML, CSS, JavaScript
 
-* ✅ Correctness (test case pass rate)
-* ⏱ Execution time
-* 📈 Time & space complexity (inferred)
-* 📚 Historical performance
-* 🚫 Plagiarism score
-* 🕒 Timely participation
+Backend
+- Node.js
+- Express.js
 
-This ensures **fair, adaptive, and industry-aligned rankings** rather than brute-force scoring.
+Database
+- MongoDB
 
----
+AI and ML
+- Python
+- OpenCV
 
-## 🔐 Security Measures
+Tools and Deployment
+- Judge0 API
+- Docker
+- Git and GitHub
+- Postman
+- Apache JMeter
+- Vercel (Frontend)
+- Render (Backend)
 
-* JWT-based secure authentication
-* Institutional email validation
-* Docker sandbox for code execution
-* Isolated runtime environments
-* AI-driven integrity enforcement
-* Encrypted credentials
-* Secure API routing
+--------------------------------------------------
 
----
+PROJECT TEAM
 
-## 🧪 Testing Conducted
+Nehal Gupta (1JB22IS099)
+Mahi Verma (1JB22IS082)
+Prathvi D Patil (1JB22IS110)
+Punya Shree S R (1JB22IS119)
 
-* Unit testing for backend APIs
-* Code execution validation with edge cases
-* Load testing for concurrent users
-* Security testing for authentication & sandboxing
-* AI model testing for false positives/negatives
-* UI/UX testing for usability & responsiveness
-
----
-
-## 📈 Results & Impact
-
-* 📊 Significant improvement in code correctness
-* 🚀 Strong increase in optimized solutions
-* 📈 Higher student participation rates
-* 🔻 Drastic reduction in plagiarism cases
-* 🎯 Better interview readiness among students
-
----
-
-## 🔮 Future Enhancements
-
-* Reinforcement Learning–based APERA scoring
-* Inter-college & national coding leagues
-* Mobile app support
-* Industry-aligned challenge library
-* Resume & skill-gap analytics
-* Corporate hiring & assessment integration
-
----
-
-## 👥 Team
-
-* **Nehal Gupta** (1JB22IS099)
-* **Mahi Verma** (1JB22IS082)
-* **Prathvi D Patil** (1JB22IS110)
-* **Punya Shree S R** (1JB22IS119)
-
-**Guide:**
+Guide
 Dr. Gopalakrishna M T
-Professor & Head, Dept. of ISE, SJBIT
+Professor and Head, Department of ISE
+SJB Institute of Technology
 
----
+--------------------------------------------------
 
-## 🏫 Institution
+INSTITUTION
 
-**SJB Institute of Technology**
+SJB Institute of Technology
 Affiliated to Visvesvaraya Technological University (VTU)
-Accredited by NAAC (A Grade) & NBA
+Accredited by NAAC (A Grade) and NBA
 
----
+--------------------------------------------------
 
-## 📜 License
+LICENSE
 
-This project is developed as an **academic final-year project**.
-Reuse or extension should credit the original authors and institution.
+This project is developed as an academic final-year project.
+Any reuse or extension should provide proper credit to the authors and institution.
 
----
+--------------------------------------------------
 
-## ⭐ Final Note
-
-> *Algo Odyssey is not just a coding platform — it is a disciplined journey that transforms students into efficient problem-solvers, ethical competitors, and industry-ready engineers.*
-
-
+END OF README
